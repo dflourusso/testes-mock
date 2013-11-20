@@ -1,0 +1,18 @@
+{
+    "name": "Testes_Mock",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Daniel Lourusso"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "": "tests"
+        }
+    },
+    "require": {
+        "paliari/php-date-time": "0.7.*"
+    }
+}
