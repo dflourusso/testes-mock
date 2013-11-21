@@ -132,4 +132,35 @@ class MockTest extends PHPUnit_Framework_TestCase
         DataTeste::$em = $em;
         $this->assertEquals(['id=6'], $c->multipleMethods(['id=6']));
     }
+
+    /**
+     * Teste auxTableName
+     */
+    public function testAuxTableName()
+    {
+        $em = $this->getMockBuilder('EntityManager')
+                   ->setMethods(array ('getClassMetadata'))
+                   ->getMock();
+        $em->expects($this->any())
+           ->method('getClassMetadata')
+           ->will($this->returnArgument(0));
+
+        $class         = new DataTeste();
+        DataTeste::$em = $em;
+        $this->assertEquals('DataTeste', $class->auxTableName());
+    }
+
+    /*
+     * Other uses example.
+        $csc = $this->getMockBuilder('Lightmaker\CloudSearchBundle\Controller\CloudSearchController')
+                    ->setConstructorArgs($constructor)
+                    ->setMethods(array('handleValue'))
+                    ->getMock();
+
+            // Tell the `handleValue` method to return 'bla'
+        $csc->expects($this->any())
+            ->method('handleValue')
+            ->with('bla');*/
+
+
 }

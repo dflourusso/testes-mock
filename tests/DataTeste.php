@@ -24,10 +24,24 @@ class DataTeste
         return static::$em->addDay(2)->addHour($v);
     }
 
+    /**
+     * @return MetaDataInfo
+     */
+    public static function auxTableName()
+    {
+        $className = get_called_class();
+        return static::getEm()->getClassMetadata($className);
+    }
+
+    public static function getTableName()
+    {
+        return static::auxTableName()->getTableName();
+    }
+
     public static function multipleMethods(array $where)
     {
-        $className = 'Clientes';
-        $tableName = static::getEm()->getClassMetadata($className)->getTableName();
+
+        $tableName = static::getTableName();
         $conn      = static::getEm()->getConnection();
         try {
             $ret = $conn->delete($tableName, $where);
