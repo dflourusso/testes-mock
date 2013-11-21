@@ -2,6 +2,7 @@
 
 class EntityManager
 {
+
     /**
      * @param $param
      *

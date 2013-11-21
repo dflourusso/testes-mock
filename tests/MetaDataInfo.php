@@ -16,4 +16,9 @@ class MetaDataInfo
     {
         return strtolower($this->tableName);
     }
-} 
+
+    public function getTableName1()
+    {
+        return $this->tableName;
+    }
+}

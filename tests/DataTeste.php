@@ -39,7 +39,7 @@ class DataTeste
      * Retorna o nome da classe que está chamando a função
      * @return MetaDataInfo
      */
-    public static function auxTableName()
+    public static function getClassMetadata()
     {
         $className = get_called_class();
 
@@ -51,7 +51,7 @@ class DataTeste
      */
     public static function getTableName()
     {
-        return static::auxTableName()->getTableName();
+        return static::getClassMetadata()->getTableName();
     }
 
     /**

@@ -147,8 +147,26 @@ class MockTest extends PHPUnit_Framework_TestCase
 
         $class         = new DataTeste();
         DataTeste::$em = $em;
-        $this->assertEquals('DataTeste', $class->auxTableName());
+        $this->assertEquals('DataTeste', $class->getClassMetadata());
     }
+
+
+
+
+/*     * Quando um mock é criado posso utilizar os métodos reais da classe. Verifique o exemplo.
+    public function testgetTableName()
+    {
+
+        $mt = $this->getMockBuilder('MetaDataInfo')
+                    ->setConstructorArgs(['v' => 'table'])
+                    ->setMethods(array('getTableName'))
+                    ->getMock();
+
+        $mt->expects($this->any())
+            ->method('getTableName')
+            ->will($this->returnSelf());
+        var_export($mt->getTableName()->getTableName1());
+    }*/
 
     /*
      * Other uses example.
