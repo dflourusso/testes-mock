@@ -9,6 +9,10 @@ class DataTeste
      */
     public static $em;
 
+    /**
+     *  Utilizado para testes mock
+     * @return string
+     */
     public function DataTesteFunction()
     {
         $date = static::$em ? static::$em->toDateTimeString('Y-m-d H:i:s') : '';
@@ -16,6 +20,13 @@ class DataTeste
         return $date;
     }
 
+    /**
+     * Utilizado para testes mock
+     *
+     * @param $v
+     *
+     * @return TDateTime
+     */
     public function addteste($v)
     {
         $date = new TDateTime();
@@ -25,19 +36,31 @@ class DataTeste
     }
 
     /**
+     * Retorna o nome da classe que está chamando a função
      * @return MetaDataInfo
      */
     public static function auxTableName()
     {
         $className = get_called_class();
+
         return static::getEm()->getClassMetadata($className);
     }
 
+    /**
+     * @return string
+     */
     public static function getTableName()
     {
         return static::auxTableName()->getTableName();
     }
 
+    /**
+     * Funcao dependente de outros métodos. Utilizada apenas para testes com mock
+     *
+     * @param array $where
+     *
+     * @return int
+     */
     public static function multipleMethods(array $where)
     {
 
@@ -54,7 +77,7 @@ class DataTeste
     }
 
     /**
-     *  @return EntityManager
+     * @return EntityManager
      */
     public static function getEm()
     {
